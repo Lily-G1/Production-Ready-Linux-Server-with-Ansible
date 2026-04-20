@@ -21,9 +21,9 @@ chmod 700 /home/ansible/.ssh
 chmod 600 /home/ansible/.ssh/authorized_keys
 echo "ansible ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/ansible
 ```
-- Copy droplet IP address after creation  
+- Copy droplet's IP address after creation  
   
-## Step 2: Setup Local Ansible Environment  
+## Step 2: Setup local Ansible environment  
 On your local or controller machine, run the following commands:  
 
 ```bash
@@ -45,7 +45,7 @@ ansible_python_interpreter=/usr/bin/python3
 EOF
 ```
 ## Step 3: Create the Ansible playbook  
-Copy and paste file contents accordingly (see repository)  
+Copy and paste file content accordingly (see repository)  
 
 ```bash
 touch playbooks/site.yml
@@ -67,7 +67,7 @@ Copy and paste file contents accordingly (see repository)
   touch files/prometheus.yml
 ```
   
-## Step 5: Run the Playbook  
+## Step 5: Run playbook  
 ```bash
 cd ~/linux-server-project
 
