@@ -1,0 +1,22 @@
+server {
+    listen 80;
+    listen [::]:80;
+    
+    server_name {{ domain_name }} www.{{ domain_name }};
+    
+    root /var/www/{{ domain_name }}/html;
+    index index.html index.htm;
+    
+    access_log /var/log/nginx/{{ domain_name }}_access.log;
+    error_log /var/log/nginx/{{ domain_name }}_error.log;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+    
+    location /nginx_status {
+        stub_status on;
+        allow 127.0.0.1;
+        deny all;
+    }
+}
