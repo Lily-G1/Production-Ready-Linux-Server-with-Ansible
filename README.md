@@ -25,7 +25,7 @@ echo "ansible ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/ansible
 ## Step 2: Setup Local Ansible Environment  
 On your local or controller machine, run the following commands:  
 
-```
+```bash
 # Create project structure
 mkdir ~/linux-server-project
 cd ~/linux-server-project
@@ -44,16 +44,20 @@ ansible_python_interpreter=/usr/bin/python3
 EOF
 ```
 ## Step 3: Create the Ansible playbook  
-```touch playbooks/site.yml```  
-## Step 4: Create supporting files  
-- NGINX virtual host file:  
-  ```touch templates/nginx-vhost.conf.j2```  
-- Backup script:  
-  ```touch files/backup_script.sh```  
-- Docker Compose File:  
-  ```files/docker-compose.yml```  
-- Prometheus configuration file:  
-  ```touch files/prometheus.yml```
+```bash
+touch playbooks/site.yml
+```  
+## Step 4: Create supporting files and paste contents accordingly (see repository)  
+```bash
+  # create NGINX virtual host file:  
+  touch templates/nginx-vhost.conf.j2```  
+  # create Backup script:  
+  touch files/backup_script.sh```  
+  # create Docker Compose File:  
+  files/docker-compose.yml```  
+  # create Prometheus configuration file:  
+  touch files/prometheus.yml
+```
   
 ## Step 5: Run the Playbook  
 ```bash
