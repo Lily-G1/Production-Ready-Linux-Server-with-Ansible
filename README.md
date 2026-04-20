@@ -1,5 +1,5 @@
 ## PRE-REQUISITES:  
-- Digital Ocean account (or other Cloud provider of choice)     
+- Digital Ocean account (or other cloud provider of choice)     
 - Local machine with Ubuntu/Debian/Mac (or WSL on Windows)  
 - Basic terminal abilities  
 
@@ -45,14 +45,29 @@ EOF
 ```
 ## Step 3: Create the Ansible playbook  
 ```touch playbooks/site.yml```  
-## Step 4: Create supporting files 
-- NGINX virtual host file:    
-  ```touch templates/nginx-vhost.conf.j2```
-- Backup script:
-  ```touch files/backup_script.sh```
-- Docker Compose File:
-  ```files/docker-compose.yml```
+## Step 4: Create supporting files  
+- NGINX virtual host file:  
+  ```touch templates/nginx-vhost.conf.j2```  
+- Backup script:  
+  ```touch files/backup_script.sh```  
+- Docker Compose File:  
+  ```files/docker-compose.yml```  
 - Prometheus configuration file:  
   ```touch files/prometheus.yml```
   
 ## Step 5: Run the Playbook  
+```bash
+cd ~/linux-server-project
+
+# Test connection
+ansible -i inventory/hosts.ini production -m ping
+
+# Run in check mode (dry run)
+ansible-playbook -i inventory/hosts.ini playbooks/site.yml --check
+
+# Run for real
+ansible-playbook -i inventory/hosts.ini playbooks/site.yml
+
+# If you get errors, run with verbose output
+ansible-playbook -i inventory/hosts.ini playbooks/site.yml -vvv
+```
