@@ -50,11 +50,14 @@ touch playbooks/site.yml
 ## Step 4: Create supporting files and paste contents accordingly (see repository)  
 ```bash
   # create NGINX virtual host file:  
-  touch templates/nginx-vhost.conf.j2```  
+  touch templates/nginx-vhost.conf.j2
+
   # create Backup script:  
-  touch files/backup_script.sh```  
+  touch files/backup_script.sh
+ 
   # create Docker Compose File:  
-  files/docker-compose.yml```  
+  files/docker-compose.yml
+
   # create Prometheus configuration file:  
   touch files/prometheus.yml
 ```
