@@ -31,9 +31,8 @@ mkdir ~/linux-server-project
 cd ~/linux-server-project
 mkdir -p {playbooks,roles,templates,files,inventory}
 
-# Install ansible (if not installed)
-sudo apt install python3-pip && ansible  
-# OR pip3 install ansible
+# Install python & ansible (if not installed already)
+sudo apt install python3-pip ansible  
 
 # Create inventory file
 cat > inventory/hosts.ini << 'EOF'
@@ -44,3 +43,16 @@ YOUR_DROPLET_IP_HERE ansible_user=ansible
 ansible_python_interpreter=/usr/bin/python3
 EOF
 ```
+## Step 3: Create the Ansible playbook  
+```touch playbooks/site.yml```  
+## Step 4: Create supporting files 
+- NGINX virtual host file:    
+  ```touch templates/nginx-vhost.conf.j2```
+- Backup script:
+  ```touch files/backup_script.sh```
+- Docker Compose File:
+  ```files/docker-compose.yml```
+- Prometheus configuration file:  
+  ```touch files/prometheus.yml```
+  
+## Step 5: Run the Playbook  
