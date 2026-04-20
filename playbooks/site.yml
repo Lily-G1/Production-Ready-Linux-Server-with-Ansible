@@ -233,27 +233,6 @@
         src: ../files/prometheus.yml
         dest: /opt/monitoring/prometheus.yml
 
-#    - name: Get internal IP address
-#      set_fact:
-#        internal_ip: "{{ ansible_default_ipv4.address }}"
-
-#    - name: Allow Prometheus node target to use internal IP
-#      replace:
-#        path: /opt/monitoring/prometheus.yml
-#        regexp: 'localhost:9100'
-#        replace: "{{ internal_ip }}:9100"
-
-#    - name: Deploy Grafana dashboards
-#      copy:
-#        src: ../files/dashboard-config.yaml
-#        dest: /opt/monitoring/dashboard-config.yaml
-
-#    - name: Start monitoring stack
-#      docker_compose:
-#        project_src: /opt/monitoring
-#        state: present
-#        restarted: yes
-
     - name: Install Node Exporter for system metrics
       shell: |
         wget https://github.com/prometheus/node_exporter/releases/download/v1.7.0/node_exporter-1.7.0.linux-amd64.tar.gz
