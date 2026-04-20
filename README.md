@@ -45,11 +45,11 @@ ansible_python_interpreter=/usr/bin/python3
 EOF
 ```
 ## Step 3: Create the Ansible playbook  
-Copy and paste file content accordingly (see repository)  
 
 ```bash
 touch playbooks/site.yml
-```  
+```
+Copy and paste file content accordingly (see repository) 
 ## Step 4: Create supporting files:  
 Copy and paste file contents accordingly (see repository)  
 
