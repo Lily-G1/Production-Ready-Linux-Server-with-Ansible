@@ -21,7 +21,8 @@ chmod 700 /home/ansible/.ssh
 chmod 600 /home/ansible/.ssh/authorized_keys
 echo "ansible ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/ansible
 ```
-
+- Copy droplet IP address after creation  
+  
 ## Step 2: Setup Local Ansible Environment  
 On your local or controller machine, run the following commands:  
 
@@ -47,7 +48,9 @@ EOF
 ```bash
 touch playbooks/site.yml
 ```  
-## Step 4: Create supporting files and paste contents accordingly (see repository)  
+## Step 4: Create supporting files:  
+Copy and paste file contents accordingly (see repository)  
+
 ```bash
   # create NGINX virtual host file:  
   touch templates/nginx-vhost.conf.j2
