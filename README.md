@@ -124,7 +124,7 @@ ssh -i ansible_key ansible@DROPLET_IP_HERE
   # Check Loki is receiving them
   docker logs loki --tail 20
   ```
-  <img width="994" height="556" alt="ansible@linux-server_ ~ 4_14_2026 1_08_26 PM" src="https://github.com/user-attachments/assets/f1a7973e-960c-4967-b56b-25f9b9e06847" />  
+  <img width="954" height="506" alt="ansible@linux-server_ ~ 4_14_2026 1_08_26 PM" src="https://github.com/user-attachments/assets/f1a7973e-960c-4967-b56b-25f9b9e06847" />  
   
 - Test NFS: What it does: Shares a directory from your droplet that other servers can mount
   ```bash
@@ -178,12 +178,12 @@ ssh -i ansible_key ansible@DROPLET_IP_HERE
   Alternative login: Go to Digital Ocean -> Droplet -> Access -> change console user to 'ansible' and log in
   ```bash
   # check list of banned IPs
-  sudo fail2ban-client status sshd: YOUR_LOCAL/CONTROLLER_IP_HERE
+  sudo fail2ban-client status sshd
 
   # unban your IP
   sudo fail2ban-client set sshd unbanip YOUR_LOCAL/CONTROLLER_IP_HERE
   ```
-  <img width="563" height="600" alt="Droplet Web" src="https://github.com/user-attachments/assets/353d30ad-4b76-4ebb-aaa4-46dc35553cbd" />  
+  <img width="563" height="563" alt="Droplet Web" src="https://github.com/user-attachments/assets/353d30ad-4b76-4ebb-aaa4-46dc35553cbd" />  
     
 ## SUMMARY - What's working on your server:  
 - Security: SSH key-only, fail2ban blocking attackers, UFW firewall, automatic security patches  
