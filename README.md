@@ -109,5 +109,57 @@ ssh -i ansible_key ansible@DROPLET_IP_HERE
   # Verify backup contents (should show nginx_configs.tar.gz, exports.backup, containers_list.txt)
   ls -la /mnt/backup_volume/*/
   ```
+- Test Loki (Log Aggregation): What it does: Collects all server logs and makes them searchable from Grafana
+  ```bash
+  # check if loki and promtail are running
+  docker ps | grep -E "loki|promtail"
+
+  # Check Promtail is collecting logs
+  docker logs promtail --tail 20
+
+  # Check Loki is receiving them
+  docker logs loki --tail 20
+  ```
+- Test NFS: What it does: Shares a directory from your droplet that other servers can mount
+  ```bash
+  $ sudo systemctl status nfs-server
   
+  # View exported directories
+  $ sudo exportfs -v
+
+  # Check if NFS port is open
+  $ sudo ufw status | grep 2049
   
+  # Create a test mount point & mount the NFS share locally
+  sudo mkdir -p /mnt/nfs_test
+  sudo mount -t nfs localhost:/srv/nfs_share /mnt/nfs_test
+
+  # Create a test file
+  echo "NFS is working" | sudo tee /mnt/nfs_test/test.txt
+
+  # Verify the file appears in the original share
+  ls -la /srv/nfs_share/
+
+  # Unmount
+  sudo umount /mnt/nfs_test
+  ```
+- Test NGINX:
+  
+- Test Backup Script & verify its scheduled execution    
+  ```bash
+  # Check if cron job exists
+  sudo crontab -l | grep backup
+
+  # Check if backup script is executable
+  ls -la /usr/local/bin/backup.sh
+
+  # Check backup log for today's automatic backup
+  sudo cat /var/log/backup.log
+  ```
+## SUMMARY: What's Working on Your Server:  
+- Security: SSH key-only, fail2ban blocking attackers, UFW firewall, auto security patches  
+- Web: NGINX serving your domain with virtual hosts  
+- Storage: NFS file sharing working  
+- Backups: Daily automated backups at 2AM    
+- Monitoring: Prometheus collecting node metrics, Grafana dashboard accessible  
+- Automation: Entire server deployed with Ansible  
