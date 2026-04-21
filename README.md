@@ -146,6 +146,7 @@ ssh -i ansible_key ansible@DROPLET_IP_HERE
 - Test NGINX:
   ```bash
   sudo systemctl status nginx
+  
   curl -H "Host: YOUR_DOMAIN_NAME_HERE" http:localhost
   ```
   <img width="691" height="300" alt="ansible@linux-server_ ~ 4_14_2026 1_34_28 PM" src="https://github.com/user-attachments/assets/d310c19b-f084-425b-8604-09677c435bf9" />  
@@ -161,6 +162,8 @@ ssh -i ansible_key ansible@DROPLET_IP_HERE
   # Check backup log for today's automatic backup
   sudo cat /var/log/backup.log
   ```
+  <img width="535" height="238" alt="ansible@linux-server_ ~ 4_14_2026 1_38_51 PM" src="https://github.com/user-attachments/assets/5a8c869c-9a0e-4edf-b575-394f9fbd81dc" />
+  
 - Test fail2ban:
   ```bash
   # multiple failed attempts to log into server will get ur IP banned
