@@ -156,7 +156,21 @@ ssh -i ansible_key ansible@DROPLET_IP_HERE
   # Check backup log for today's automatic backup
   sudo cat /var/log/backup.log
   ```
-## SUMMARY - What's Working on Your Server:  
+  - Test fail2ban:
+    ```bash
+    # multiple failed attempts to log into server will get ur IP banned
+    for i in {1..5}; do ssh wronguser@DROPLET_IP_HERE; done
+    ```
+    To log in: Go to Digital Ocean: server droplet -> Access -> change console user to 'ansible' and log in
+    ```bash
+    # check list of banned IPs
+    sudo fail2ban-client status sshd: YOUR_LOCAL/CONTROLLER_IP_HERE
+
+    # unban your IP
+    sudo fail2ban-client set sshd unbanip YOUR_LOCAL/CONTROLLER_IP_HERE
+    ``` 
+    
+## SUMMARY - What's working on your server:  
 - Security: SSH key-only, fail2ban blocking attackers, UFW firewall, auto security patches  
 - Web: NGINX serving your domain with virtual hosts  
 - Storage: NFS file sharing working  
