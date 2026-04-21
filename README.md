@@ -95,6 +95,8 @@ ssh -i ansible_key ansible@DROPLET_IP_HERE
   cat /etc/apt/apt.conf.d/20auto-upgrades  
   cat /etc/apt/apt.conf.d/50unattended-upgrades | grep -A 5 "Allowed-Origins"
   ```
+  <img width="703" height="423" alt="ansible@linux-server_ ~ 4_14_2026 12_46_41 PM" src="https://github.com/user-attachments/assets/287eee18-04e2-4054-a4bf-be4165dfbee3" />  
+
 - Test cron backup script:
   ```bash
   # Run backup script
@@ -109,6 +111,8 @@ ssh -i ansible_key ansible@DROPLET_IP_HERE
   # Verify backup contents (should show nginx_configs.tar.gz, exports.backup, containers_list.txt)
   ls -la /mnt/backup_volume/*/
   ```
+  <img width="400" height="507" alt="ansible@linux-server_ ~ 4_14_2026 12_55_07 PM" src="https://github.com/user-attachments/assets/02ad78d2-e01e-462b-a88e-1076a508922c" />  
+  
 - Test Loki: What it does: Collects all server logs and makes them searchable from Grafana
   ```bash
   # check if loki and promtail are running
