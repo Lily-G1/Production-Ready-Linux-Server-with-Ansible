@@ -144,6 +144,11 @@ ssh -i ansible_key ansible@DROPLET_IP_HERE
   sudo umount /mnt/nfs_test
   ```
 - Test NGINX:
+  ```bash
+  sudo systemctl status nginx
+  curl -H ''
+  ```
+  <img width="691" height="319" alt="ansible@linux-server_ ~ 4_14_2026 1_34_28 PM" src="https://github.com/user-attachments/assets/d310c19b-f084-425b-8604-09677c435bf9" />  
   
 - Test Backup Script & verify its scheduled execution    
   ```bash
@@ -156,25 +161,25 @@ ssh -i ansible_key ansible@DROPLET_IP_HERE
   # Check backup log for today's automatic backup
   sudo cat /var/log/backup.log
   ```
-  - Test fail2ban:
-    ```bash
-    # multiple failed attempts to log into server will get ur IP banned
-    for i in {1..5}; do ssh wronguser@DROPLET_IP_HERE; done
-    ```
-    To log in: Go to Digital Ocean: server droplet -> Access -> change console user to 'ansible' and log in
-    ```bash
-    # check list of banned IPs
-    sudo fail2ban-client status sshd: YOUR_LOCAL/CONTROLLER_IP_HERE
+- Test fail2ban:
+  ```bash
+  # multiple failed attempts to log into server will get ur IP banned
+  for i in {1..5}; do ssh wronguser@DROPLET_IP_HERE; done
+  ```
+  Alternative login: Go to Digital Ocean -> Droplet -> Access -> change console user to 'ansible' and log in
+  ```bash
+  # check list of banned IPs
+  sudo fail2ban-client status sshd: YOUR_LOCAL/CONTROLLER_IP_HERE
 
-    # unban your IP
-    sudo fail2ban-client set sshd unbanip YOUR_LOCAL/CONTROLLER_IP_HERE
-    ``` 
+  # unban your IP
+  sudo fail2ban-client set sshd unbanip YOUR_LOCAL/CONTROLLER_IP_HERE
+  ``` 
     
 ## SUMMARY - What's working on your server:  
-- Security: SSH key-only, fail2ban blocking attackers, UFW firewall, auto security patches  
+- Security: SSH key-only, fail2ban blocking attackers, UFW firewall, automatic security patches  
 - Web: NGINX serving your domain with virtual hosts  
 - Storage: NFS file sharing working  
 - Backups: Daily automated backups at 2AM    
 - Monitoring: Prometheus collecting node metrics, Grafana dashboard accessible
-- Log Aggregation and accessibility by Grafana  
+- Log aggregation and accessibility by Grafana  
 - Automation: Entire server deployed with Ansible  
