@@ -44,14 +44,14 @@ YOUR_DROPLET_IP_HERE ansible_user=ansible
 ansible_python_interpreter=/usr/bin/python3
 EOF
 ```
-## Step 3: Create the Ansible playbook  
+## Step 3: Create Ansible playbook  
 
 ```bash
 touch playbooks/site.yml
 ```
 Copy and paste file content accordingly (see repository) 
 
-## Step 4: Create supporting files:  
+## Step 4: Create supporting files  
 Copy and paste file contents accordingly (see repository)  
 
 ```bash
@@ -84,7 +84,7 @@ ansible-playbook -i inventory/hosts.ini playbooks/site.yml
 ansible-playbook -i inventory/hosts.ini playbooks/site.yml -vvv
 ```
 ## Step 6: Confirm configurations  
-Log into server(from your local/controller machine):  
+Log into server (from your local/controller machine):  
 ```bash
 cd ~/.ssh
 ssh -i ansible_key ansible@DROPLET_IP_HERE
@@ -109,7 +109,7 @@ ssh -i ansible_key ansible@DROPLET_IP_HERE
   # Verify backup contents (should show nginx_configs.tar.gz, exports.backup, containers_list.txt)
   ls -la /mnt/backup_volume/*/
   ```
-- Test Loki (Log Aggregation): What it does: Collects all server logs and makes them searchable from Grafana
+- Test Loki: What it does: Collects all server logs and makes them searchable from Grafana
   ```bash
   # check if loki and promtail are running
   docker ps | grep -E "loki|promtail"
@@ -156,10 +156,11 @@ ssh -i ansible_key ansible@DROPLET_IP_HERE
   # Check backup log for today's automatic backup
   sudo cat /var/log/backup.log
   ```
-## SUMMARY: What's Working on Your Server:  
+## SUMMARY - What's Working on Your Server:  
 - Security: SSH key-only, fail2ban blocking attackers, UFW firewall, auto security patches  
 - Web: NGINX serving your domain with virtual hosts  
 - Storage: NFS file sharing working  
 - Backups: Daily automated backups at 2AM    
-- Monitoring: Prometheus collecting node metrics, Grafana dashboard accessible  
+- Monitoring: Prometheus collecting node metrics, Grafana dashboard accessible
+- Log Aggregation and accessibility by Grafana  
 - Automation: Entire server deployed with Ansible  
