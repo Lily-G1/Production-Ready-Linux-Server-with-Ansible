@@ -12,7 +12,7 @@
 
 ```bash
 #!/bin/bash
-# Initial bootstrap - creates ansible user with sudo
+# Initial bootstrap - creates a sudo user named 'ansible'  
 useradd -m -s /bin/bash -G sudo ansible
 mkdir -p /home/ansible/.ssh
 echo "YOUR_PUBLIC_SSH_KEY_HERE" > /home/ansible/.ssh/authorized_keys
@@ -50,6 +50,7 @@ EOF
 touch playbooks/site.yml
 ```
 Copy and paste file content accordingly (see repository) 
+
 ## Step 4: Create supporting files:  
 Copy and paste file contents accordingly (see repository)  
 
@@ -66,7 +67,6 @@ Copy and paste file contents accordingly (see repository)
   # create Prometheus configuration file:  
   touch files/prometheus.yml
 ```
-  
 ## Step 5: Run playbook  
 ```bash
 cd ~/linux-server-project
@@ -83,3 +83,31 @@ ansible-playbook -i inventory/hosts.ini playbooks/site.yml
 # If you get errors, run with verbose output
 ansible-playbook -i inventory/hosts.ini playbooks/site.yml -vvv
 ```
+## Step 6: Confirm configurations  
+Log into server(from your local/controller machine):  
+```bash
+cd ~/.ssh
+ssh -i ansible_key ansible@DROPLET_IP_HERE
+```
+- Test Unattended upgrades:
+  ```bash
+  sudo systemctl status unattended-upgrades
+  cat /etc/apt/apt.conf.d/20auto-upgrades  
+  cat /etc/apt/apt.conf.d/50unattended-upgrades | grep -A 5 "Allowed-Origins"
+  ```
+- Test cron backup script:
+  ```bash
+  # Run backup script
+  sudo /usr/local/bin/backup.sh
+
+  # Check if backup directory exist
+  ls -la /mnt/backup_volume/
+
+  # Check backup log
+  sudo tail -20 /var/log/backup.log
+
+  # Verify backup contents (should show nginx_configs.tar.gz, exports.backup, containers_list.txt)
+  ls -la /mnt/backup_volume/*/
+  ```
+  
+  
