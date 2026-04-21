@@ -146,9 +146,9 @@ ssh -i ansible_key ansible@DROPLET_IP_HERE
 - Test NGINX:
   ```bash
   sudo systemctl status nginx
-  curl -H ''
+  curl -H "Host: YOUR_DOMAIN_NAME_HERE" http:localhost
   ```
-  <img width="691" height="319" alt="ansible@linux-server_ ~ 4_14_2026 1_34_28 PM" src="https://github.com/user-attachments/assets/d310c19b-f084-425b-8604-09677c435bf9" />  
+  <img width="691" height="300" alt="ansible@linux-server_ ~ 4_14_2026 1_34_28 PM" src="https://github.com/user-attachments/assets/d310c19b-f084-425b-8604-09677c435bf9" />  
   
 - Test Backup Script & verify its scheduled execution    
   ```bash
