@@ -1,3 +1,7 @@
+
+<img width="600" height="400" alt="linux_server drawio3" src="https://github.com/user-attachments/assets/fd5ebabb-6c11-459b-8b83-84d70764d8ac" />
+
+
 ## PRE-REQUISITES:  
 - Digital Ocean account (or other cloud provider of choice)     
 - Local machine with Ubuntu/Debian/Mac (or WSL on Windows)  
