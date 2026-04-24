@@ -10,5 +10,3 @@ scrape_configs:
   - job_name: 'node'
     static_configs:
       - targets: ['localhost:9100']
-        
-    # Note: You need to run node_exporter on host separately
