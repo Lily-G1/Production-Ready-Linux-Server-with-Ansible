@@ -197,7 +197,9 @@ ssh -i ansible_key ansible@DROPLET_IP_HERE
 - Monitoring: Prometheus collecting node metrics, Grafana dashboard accessible
 - Log aggregation and accessibility by Grafana  
 - Automation: Entire server deployed with Ansible
-
+  
+  
+  
 ## LIVE SCREENSHOTS:
 domain/droplet_ip (home page):  
 <img width="731" height="255" alt="Production Server - Brave 4_14_2026 1_33_09 PM" src="https://github.com/user-attachments/assets/503e4551-1985-44df-9333-eaa51905a7fd" />  
