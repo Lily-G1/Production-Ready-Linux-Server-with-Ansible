@@ -196,4 +196,17 @@ ssh -i ansible_key ansible@DROPLET_IP_HERE
 - Backups: Daily automated backups at 2AM    
 - Monitoring: Prometheus collecting node metrics, Grafana dashboard accessible
 - Log aggregation and accessibility by Grafana  
-- Automation: Entire server deployed with Ansible  
+- Automation: Entire server deployed with Ansible
+
+## LIVE SCREENSHOTS:
+domain/droplet_ip (home page):  
+<img width="731" height="255" alt="Production Server - Brave 4_14_2026 1_33_09 PM" src="https://github.com/user-attachments/assets/503e4551-1985-44df-9333-eaa51905a7fd" />  
+
+droplet_ip:9090 (prometheus: target's health status):  
+<img width="1100" height="394" alt="Prometheus Time Series Colle" src="https://github.com/user-attachments/assets/a344bff5-2c57-4985-90c4-c12bfd1b2eae" />  
+
+droplet_ip:3000 (grafana sample dashboard):  
+<img width="1050" height="532" alt="Prometheus Time Series " src="https://github.com/user-attachments/assets/93a48503-bbd1-4b60-b3d3-e8ca9ef6529a" />
+
+
+
